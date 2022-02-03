@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>fieldPage</title>
+</head>
+</head>
+<body>
+	<div id="top_div">
+		<h1>Fields</h1>
+	</div>
+	<table>
+    <thead>
+        <tr>
+            <th> Farmer </th>
+            <th> Location of Field </th>
+            <th> More Details </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${fList.empty}">
+            <td colspan="2"> No Field Available </td>
+        </tr>
+        <tr th:each="field : ${fList}">
+        	<form action="FieldPageController" method="POST">
+            <td><span th:text="${field.farmer.email}"> Farmer </span></td>
+             <td><span><input type=text name="fieldLocation" th:value="${field.location}" readonly></span></td>
+            <td>
+				<input type="submit" value=">>">
+				<p th:text=" ${errorMsg}"></p>
+			</td>
+			</form>
+        </tr>
+    </tbody>
+</table>
+</html>

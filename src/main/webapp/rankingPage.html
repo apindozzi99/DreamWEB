@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Ranking page</title>
+</head>
+</head>
+<div id="top_div">
+		<h1>Ranking</h1>
+	</div>
+<tbody>
+			<tr th:if="${pList.empty}">
+				<td colspan="2">No Product Available</td>
+			</tr>
+			<form action="RankingPageController" method="GET">
+			<select th:field="${pList}" name="product">
+    		<option th:each="p : ${pList}" th:value="${p}" th:text="${p}">
+    		</option>
+    		<input type="submit" value="select">
+				<p th:text=" ${errorMsg}"></p>
+			</select>
+			</form>
+			<form action="InverseRankingController" method="GET">
+				<input type="submit" value="Invert">
+				<p th:text=" ${errorMsg}"></p>
+			</form>
+			<table>
+		<thead>
+			<tr>
+				<th>IdProduction</th>
+				<th>Farmer</th>
+				<th>Score</th>
+				<th>Send Incentive</th>
+				<th>Send Help</th>
+			</tr>
+		</thead>
+		<tbody th:if ="${session.desc==true}">
+			<tr th:if="${rList.empty}">
+				<td colspan="2">No Production Available</td>
+			</tr>
+			<tr th:each="r : ${rList}">
+				<form action=RankingPageController method = "GET">
+				<td><span><input type=text name="idPord" th:value="${r.idproduction}" readonly></span></td>
+				<td><span th:text="${r.production.field.farmer.email}"></span></td>
+				<td><span th:text="${r.Score}"></span></td>
+				<td><input type = submit value="Send Icentive"></td>
+				<td><input type = submit value="Send Help" disabled></td>
+				</form>
+			</tr>
+		</tbody>
+		<tbody th:if ="${session.desc==false}">
+			<tr th:if="${rList.empty}">
+				<td colspan="2">No Production Available</td>
+			</tr>
+			<tr th:each="r : ${rList}">
+				<form action=RankingPageController method = "GET">
+				<td><span><input type=text name="idPord" th:value="${r.idproduction}" readonly></span></td>
+				<td><span th:text="${r.production.field.farmer.email}"></span></td>
+				<td><span th:text="${r.Score}"></span></td>
+				<td><input type = submit value="Send Icentive" disabled></td>
+				<td><input type = submit value="Send Help"></td>
+				</form>
+			</tr>
+		</tbody>
+	</table>
+</tbody>
+</html>

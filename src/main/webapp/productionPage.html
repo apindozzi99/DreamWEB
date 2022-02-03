@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Production Page</title>
+</head>
+</head>
+<body></body>
+	<div id="top_div">
+		<h1>Production</h1>
+	</div>
+		<label th:text="${session.field.farmer.email}"></label> Production of Field:<label th:text ="${session.field.location}"></label>
+	<table>
+		<thead>
+			<tr>
+				<th>Type</th>
+				<th>plantedDate</th>
+				<th>collectedDate</th>
+				<th>plantedAmount</th>
+				<th>collectedAmount</th>
+				<th>fertilizers Used</th>
+				<th>Avg Water</th>
+				<th>Avg Rainfall</th>
+				<th>Avg Humidity Soil</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${pList.empty}">
+				<td colspan="2">No Production Available</td>
+			</tr>
+			<tr th:each="p : ${pList}">
+				<td><span th:text="${p.product}"></span></td>
+				<td><span th:text="${p.plantedDate}"></span></td>
+				<td><span th:text="${p.collectedDate}"></span></td>
+				<td><span th:text="${p.plantedAmount}"></span></td>
+				<td><span th:text="${p.collectedAmount}"></span></td>
+				<td><span> <ul>
+            	<li th:each="fert : ${p.fertilizers}">
+            	<span
+					th:text="${fert.name}"></span></li>
+        		</ul></span></td>
+				<td><span th:text="${p.avgWater}"></span></td>
+				<td><span th:text="${p.avgRainFall}"></span></td>
+				<td><span th:text="${p.avgHumiditySoil}"></span></td>
+			</tr>
+		</tbody>
+	</table>
+</html>
