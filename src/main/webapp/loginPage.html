@@ -3,16 +3,20 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Login Page</title>
+<link rel="stylesheet" type="text/css"
+     href="css/loginPage.css" th:href="@{/css/loginPage.css}" title="Default Styles" media="screen">
 </head>
 </head>
 <body>
 	<div id="top_div">
-		<h1>login</h1>
+		<h1>LOGIN</h1>
 	</div>
+	<div id = "log_div" class = "center">
 	<form action="CheckLogin" method="POST" id="loginForm">
-		Email: <input type="text" name="loginEmail" required> <br>
-		Password: <input type="password" name="loginPassword" required><br>
+		<label>Email: </label> <input id = "textfield" type="text" name="loginEmail" required> <br> <br> <br>
+		<label>Password: </label> <input id = "textfield" type="password" name="loginPassword" required><br> <br> <br>
 		<input type="submit" value="Confirm">
 		<p th:text=" ${errorMsg}"></p>
 	</form>
+	</div>
 </html>

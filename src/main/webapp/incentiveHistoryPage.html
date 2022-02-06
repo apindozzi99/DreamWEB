@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Incentive History page</title>
+<link rel="stylesheet" type="text/css"
+     href="css/fieldPage.css" th:href="@{/css/fieldPage.css}" title="Default Styles" media="screen">
+</head>
+<body>
+<table id="customers" class="center">
+    <thead>
+        <tr>
+            <th> Product </th>
+            <th> Farmer </th>
+            <th> Amount </th>
+            <th> Date </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${iList.empty}">
+            <td colspan="2"> No Incentive Available </td>
+        </tr>
+        <tr th:each="i : ${iList}">
+            <td><span th:text="${i.production.product}">  </span></td>
+            <td><span th:text="${i.production.field.farmer.email}">  </span></td>
+            <td><span th:text="${i.amount}">  </span></td>
+            <td><span th:text="${i.date}">  </span></td>
+        </tr>
+    </tbody>
+
+</body>

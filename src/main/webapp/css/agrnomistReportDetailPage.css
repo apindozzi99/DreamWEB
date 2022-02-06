@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+  background-image: url("../images/background-2.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+  background-color:#cccccc;
+}
+
+#top_div{
+position: absolute;
+width:100%;
+top: 15%;
+padding: 10px;
+color:white;
+font-size:30px;
+font-style:bold;
+}
+
+#problem_div{
+position: absolute;
+width:50%;
+height: 70%;
+top: 25%;
+padding: 10px;
+background-color:white;
+font-size:25px;
+}
+
+#score_div{
+position: absolute;
+width:30%;
+right:10%;
+height: 70%;
+top: 40%;
+padding: 10px;
+font-size:20px;
+color: white;
+}

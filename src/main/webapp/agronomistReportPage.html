@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Agrnomist Report page</title>
+<link rel="stylesheet" type="text/css"
+     href="css/fieldPage.css" th:href="@{/css/fieldPage.css}" title="Default Styles" media="screen">
+</head>
+<body>
+<table id="customers" class="center">
+    <thead>
+        <tr>
+        	<th> IdReport </th>
+            <th> Agronomist </th>
+            <th> Farmer </th>
+            <th> More Details </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${aList.empty}">
+            <td colspan="2"> No Report Available </td>
+        </tr>
+        <tr th:each="a : ${aList}">
+        	<form action="AgronomistreportDetailPageController" method="GET">
+        	<td><span><input type=text name="idReport" th:value="${a.idagronomistReport}" readonly></span></td>
+            <td><span th:text="${a.name}"> </span></td>
+            <td><span th:text="${a.farmer.email}"> </span></td>
+            <td>
+				<input type="submit" value=">>">
+			</td>
+			</form>
+        </tr>
+    </tbody>
+</table>
+
+</body>

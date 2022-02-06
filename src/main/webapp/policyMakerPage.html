@@ -3,18 +3,26 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>PolicyMaker Page</title>
-</head>
+<link rel="stylesheet" type="text/css"
+     href="css/policyMakerPage.css" th:href="@{/css/policyMakerPage.css}" title="Default Styles" media="screen">
 </head>
 <body>
 	<div id="top_div">
-		<h1>Welcome</h1>
+		<h1>Welcome PolicyMaker</h1>
 	</div>
-	<form action="FieldPageController" method="GET">
-		<input type="submit" value="Fields">
-		<p th:text=" ${errorMsg}"></p>
+	<div id = "form1" class="left">
+	<form  action="FieldPageController" method="GET">
+		<input type="submit" value=" ">
 	</form>
+	</div>
+	<div id = "form2" class="center">
 	<form action="RankingPageController" method="GET">
-		<input type="submit" value="Ranking">
-		<p th:text=" ${errorMsg}"></p>
+		<input type="submit" value= " ">
 	</form>
+	</div>
+	<div id = "form3" class="right">
+	<form action="AgronomistReportPageController" method="GET">
+		<input type="submit" value= " ">
+	</form>
+	</div>
 </html>

@@ -33,10 +33,6 @@ public class DreamServlet extends HttpServlet {
 	
 	
 	private Usr usr;
-	
-	
-	@EJB(name = "managers/RegistrationManager")
-	private RegistrationManager registration;
 
 	public DreamServlet() {
 		super();
@@ -57,9 +53,6 @@ public class DreamServlet extends HttpServlet {
 		String path = "/homePage.html";
 		ServletContext servletContext = getServletContext();
 		final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-		usr = registration.getUser("dile");
-		System.out.println(usr.getEmail());
-		ctx.setVariable("usr", usr);
 		templateEngine.process(path, ctx, response.getWriter());
 	}
 

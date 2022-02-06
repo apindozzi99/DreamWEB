@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+  background-image: url("../images/background-2.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+  background-color:#cccccc;
+}
+
+input[type=submit] {
+  width: 30%;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border-color: white;
+}
+
+h1{
+	margin-right: 1200px;
+	margin-left: 10px;
+	margin-top: 10px;
+	color:linen;
+	text-decoration: none;
+	font-family: "Copperplate", "Fantasy";
+	font-weight: bold;
+}
+
+input[type=submit] {
+  width: 150px;
+  height: 200px;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+#form1{
+  width: 170px;
+  height: 200px;
+  background-image: url("../images/fieldButton.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+}
+
+#form2{
+  width: 170px;
+  height: 200px;
+  background-image: url("../images/rankingBuppon.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+}
+
+#form3{
+  width: 170px;
+  height: 200px;
+  background-image: url("../images/agronomistButton.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+}
+
+.center {
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+}
+
+.left {
+position: absolute;
+left: 20%;
+top: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+}
+
+.right {
+position: absolute;
+left: 80%;
+top: 50%;
+transform: translate(-50%, -50%);
+padding: 10px;
+}

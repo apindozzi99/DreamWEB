@@ -3,14 +3,18 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Production Page</title>
+<link rel="stylesheet" type="text/css"
+     href="css/fieldPage.css" th:href="@{/css/fieldPage.css}" title="Default Styles" media="screen">
 </head>
 </head>
 <body></body>
 	<div id="top_div">
 		<h1>Production</h1>
 	</div>
+	<div id="name_div">
 		<label th:text="${session.field.farmer.email}"></label> Production of Field:<label th:text ="${session.field.location}"></label>
-	<table>
+	</div>
+	<table id="customers" class="center">
 		<thead>
 			<tr>
 				<th>Type</th>

@@ -12,6 +12,9 @@
 		<url-pattern>/ProductionPageController</url-pattern>
 		<url-pattern>/RankingPageController</url-pattern>
 		<url-pattern>/InverseRankingController</url-pattern>
+		<url-pattern>/IncentiveHistoryPageController</url-pattern>
+		<url-pattern>/AgronomistReportPageController</url-pattern>
+		<url-pattern>/AgronomistreportDetailPageController</url-pattern>
 	</filter-mapping> 
   <welcome-file-list>
     <welcome-file>homePage.html</welcome-file>

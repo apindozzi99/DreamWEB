@@ -80,7 +80,9 @@ public class RankingPageController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// obtain and escape params
+		System.out.println("POST");
 		String idProduction = null;
+		boolean toCheck = (boolean) request.getSession().getAttribute("desc");
 		idProduction= StringEscapeUtils.escapeJava(request.getParameter("idPord"));
 		int id = Integer.parseInt(idProduction);
 		try {
@@ -92,9 +94,15 @@ public class RankingPageController extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		boolean created = manager.addNotification(production);
+		if (toCheck==true) {
+			boolean created = manager.addNotification(production);
+		}
+		else if (toCheck==false) {
+			boolean helpCreated = manager.sendHelp(production);
+		}
+		
 		String path;
-		request.getSession().setAttribute("created", created);
+		//request.getSession().setAttribute("created", created);
 		path = getServletContext().getContextPath() + "/RankingPageController";
 		response.sendRedirect(path);
 	}

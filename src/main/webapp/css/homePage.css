@@ -1,0 +1,19 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+  background-image: url("../images/home.png");
+  background-size:cover;                 
+  background-repeat:no-repeat;
+  background-color:#cccccc;
+}
+
+#loginText{
+	color:linen;
+	text-decoration: none;
+	font-family: "Copperplate", "Fantasy";
+	font-size: 20px;
+	font-weight: bold;
+	margin-left: 1150px;
+	margin-right: 10px;
+}

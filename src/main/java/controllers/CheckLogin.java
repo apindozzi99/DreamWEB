@@ -36,7 +36,9 @@ public class CheckLogin extends HttpServlet {
 
 	@EJB(name = "managers/LoginManager")
     LoginManager manager;
-    
+	@EJB(name = "managers/PolicyMakerManager")
+	PolicyMakerManager pmanager;
+	
     public CheckLogin() {
 		super();
 	}
@@ -72,9 +74,11 @@ public class CheckLogin extends HttpServlet {
 			return;
 		}
 		Usr usr;
+		Policymaker pm;
 		try {
 			// query db to authenticate for user
 			usr = manager.checkCredentials(email, pwd);
+			pm= pmanager.getPolicyMaker(usr);
 		} catch (CredentialsException | NonUniqueResultException e) {
 			e.printStackTrace();
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Could not check credentials");
@@ -85,7 +89,7 @@ public class CheckLogin extends HttpServlet {
 		// show login page with error message
 
 		String path;
-		if (usr == null) {
+		if (usr == null || pm==null) {
 			ServletContext servletContext = getServletContext();
 			final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
 			ctx.setVariable("errorMsg", "Incorrect username or password");
@@ -93,6 +97,7 @@ public class CheckLogin extends HttpServlet {
 			templateEngine.process(path, ctx, response.getWriter());
 		} else {
 			request.getSession().setAttribute("usr", usr);
+			request.getSession().setAttribute("pm",pm);
 			path = getServletContext().getContextPath() + "/GoToPolicyMakerPage";
 			response.sendRedirect(path);
 			System.out.println("Correct");

@@ -3,7 +3,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Ranking page</title>
-</head>
+<link rel="stylesheet" type="text/css"
+     href="css/rankingPage.css" th:href="@{/css/rankingPage.css}" title="Default Styles" media="screen">
 </head>
 <div id="top_div">
 		<h1>Ranking</h1>
@@ -12,6 +13,7 @@
 			<tr th:if="${pList.empty}">
 				<td colspan="2">No Product Available</td>
 			</tr>
+			<div id="buttons">
 			<form action="RankingPageController" method="GET">
 			<select th:field="${pList}" name="product">
     		<option th:each="p : ${pList}" th:value="${p}" th:text="${p}">
@@ -21,10 +23,13 @@
 			</select>
 			</form>
 			<form action="InverseRankingController" method="GET">
-				<input type="submit" value="Invert">
-				<p th:text=" ${errorMsg}"></p>
+				<input type="submit" value="Invert"> <br><br>
 			</form>
-			<table>
+			<form action="IncentiveHistoryPageController" method="GET">
+				<input type="submit" value="Incentives">
+			</form>
+			</div>
+			<table id="customers" class="center">
 		<thead>
 			<tr>
 				<th>IdProduction</th>
@@ -35,11 +40,8 @@
 			</tr>
 		</thead>
 		<tbody th:if ="${session.desc==true}">
-			<tr th:if="${rList.empty}">
-				<td colspan="2">No Production Available</td>
-			</tr>
 			<tr th:each="r : ${rList}">
-				<form action=RankingPageController method = "GET">
+				<form action=RankingPageController method = "POST">
 				<td><span><input type=text name="idPord" th:value="${r.idproduction}" readonly></span></td>
 				<td><span th:text="${r.production.field.farmer.email}"></span></td>
 				<td><span th:text="${r.Score}"></span></td>
@@ -49,11 +51,8 @@
 			</tr>
 		</tbody>
 		<tbody th:if ="${session.desc==false}">
-			<tr th:if="${rList.empty}">
-				<td colspan="2">No Production Available</td>
-			</tr>
 			<tr th:each="r : ${rList}">
-				<form action=RankingPageController method = "GET">
+				<form action=RankingPageController method = "POST">
 				<td><span><input type=text name="idPord" th:value="${r.idproduction}" readonly></span></td>
 				<td><span th:text="${r.production.field.farmer.email}"></span></td>
 				<td><span th:text="${r.Score}"></span></td>

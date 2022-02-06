@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.ejb.EJB;
+import javax.persistence.NonUniqueResultException;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.thymeleaf.TemplateEngine;
 
 import managers.*;
@@ -26,16 +28,17 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 /**
  * Servlet implementation class goToPolicyMakerHomePage
  */
-@WebServlet("/ProductionPageController")
-public class ProductionPageController extends HttpServlet {
+@WebServlet("/AgronomistReportPageController")
+public class AgronomistReportPageController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private List<Production> pList = null;
+	private List<Agronomistreport> aList = null;
+	private Agronomistreport report;
 	private TemplateEngine templateEngine;
 	
-	@EJB(name = "managers/ProductionManager")
-    ProductionManager manager;
+	@EJB(name = "managers/AgronomistReportManager")
+	AgronomistReportManager manager;
 	
-	public ProductionPageController() {
+	public AgronomistReportPageController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -52,18 +55,12 @@ public class ProductionPageController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String path = "/productionPage.html";
-		//Field f = request.;
-		//pList = manager.getAllFields();
+		String path = "/agronomistReportPage.html";
+		aList = manager.getAllAgronomistReport();
 		ServletContext servletContext = getServletContext();
 		final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-		//ctx.setVariable("fList", fList);
-		///System.out.println(fList.get(0));
-		//System.out.println("ciao");
-		Field field = (Field) ctx.getSession().getAttribute("field");
-		pList = manager.getAllProduction(field);
-		ctx.setVariable("pList", pList);
-		templateEngine.process(path, ctx, response.getWriter());	
+		ctx.setVariable("aList", aList);
+		templateEngine.process(path, ctx, response.getWriter());
 		
 	}
 
