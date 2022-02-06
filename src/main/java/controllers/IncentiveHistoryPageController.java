@@ -26,7 +26,9 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 /**
+ * 
  * Servlet implementation class goToPolicyMakerHomePage
+ * 
  */
 @WebServlet("/IncentiveHistoryPageController")
 public class IncentiveHistoryPageController extends HttpServlet {
@@ -51,7 +53,9 @@ public class IncentiveHistoryPageController extends HttpServlet {
 		templateResolver.setSuffix(".html");
 	}
 	/**
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = "/incentiveHistoryPage.html";

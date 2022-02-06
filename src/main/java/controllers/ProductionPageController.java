@@ -53,22 +53,13 @@ public class ProductionPageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = "/productionPage.html";
-		//Field f = request.;
-		//pList = manager.getAllFields();
 		ServletContext servletContext = getServletContext();
 		final WebContext ctx = new WebContext(request, response, servletContext, request.getLocale());
-		//ctx.setVariable("fList", fList);
-		///System.out.println(fList.get(0));
-		//System.out.println("ciao");
 		Field field = (Field) ctx.getSession().getAttribute("field");
 		pList = manager.getAllProduction(field);
 		ctx.setVariable("pList", pList);
 		templateEngine.process(path, ctx, response.getWriter());	
 		
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 }

@@ -57,8 +57,5 @@ public class GoToPolicyMakerPage extends HttpServlet {
 		templateEngine.process(path, ctx, response.getWriter());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 }

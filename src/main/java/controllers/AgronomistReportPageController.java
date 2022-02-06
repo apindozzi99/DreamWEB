@@ -52,7 +52,9 @@ public class AgronomistReportPageController extends HttpServlet {
 		templateResolver.setSuffix(".html");
 	}
 	/**
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * 
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = "/agronomistReportPage.html";
@@ -64,8 +66,5 @@ public class AgronomistReportPageController extends HttpServlet {
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 
 }

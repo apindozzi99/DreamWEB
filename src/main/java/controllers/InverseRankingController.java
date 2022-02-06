@@ -27,7 +27,9 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import java.util.Collections;
 
 /**
+ * 
  * Servlet implementation class goToPolicyMakerHomePage
+ * 
  */
 @WebServlet("/InverseRankingController")
 public class InverseRankingController extends HttpServlet {
