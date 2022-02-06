@@ -96,9 +96,15 @@ public class RankingPageController extends HttpServlet {
 		}
 		if (toCheck==true) {
 			boolean created = manager.addNotification(production);
+			if (created == true)
+				request.getSession().setAttribute("created", "incSent");
+			else if (created == false)
+				request.getSession().setAttribute("created", "incNotSent");
 		}
 		else if (toCheck==false) {
 			boolean helpCreated = manager.sendHelp(production);
+			if (helpCreated == true)
+				request.getSession().setAttribute("created", "helpSent");
 		}
 		
 		String path;
